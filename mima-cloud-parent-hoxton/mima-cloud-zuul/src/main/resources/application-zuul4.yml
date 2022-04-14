@@ -1,0 +1,18 @@
+zuul: 
+  routes:
+    #单独设置某一个服务的反向代理规则,名字可以随便,只要不重复即可
+    providers: 
+      #代理路径
+      path: /pro-url/**
+      #此处的serviceId随便写
+      serviceId: mima-cloud-producer
+ribbon:
+  eureka:
+    #使用本地服务列表的方式,所以禁用ribbon的Eureka
+    enabled: false  
+mima-cloud-producer:  #此处必须为zuul.routes.providers.serviceId
+  ribbon:
+    #设置ribbon的服务列表,用于zuul的负载均衡
+    listOfServers: http://127.0.0.1:9907,http://127.0.0.1:9908
+      
+ 

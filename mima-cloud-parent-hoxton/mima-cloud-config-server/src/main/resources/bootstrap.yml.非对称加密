@@ -1,0 +1,6 @@
+encrypt: 
+  key-store: 
+    location: config-server2.keystore
+    alias: config-server2
+    password: 123456
+    secret: 123456

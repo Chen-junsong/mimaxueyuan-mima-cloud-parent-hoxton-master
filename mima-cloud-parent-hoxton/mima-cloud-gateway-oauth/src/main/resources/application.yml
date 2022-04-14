@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: mima-cloud-gateway-oauth
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #是否开启服务注册与发现代理，默认为false
+          enabled: true
+          #是否开启小写访问，默认为大写
+          lower-case-service-id: true
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true

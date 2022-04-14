@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: mima-cloud-config-server
+  cloud:
+    config:
+      server:
+        svn:
+          #svn需要引入新的pom依赖
+          #svn路径不能直接指定根目录,必须在跟目录下创建一个子目录
+          #可使用如下路径访问配置文件：
+          #http://192.168.12.249:6061/application-pro.yml
+          #http://192.168.12.249:6061/application-dev.yml
+          #http://192.168.12.249:6061/application/pro
+          #http://192.168.12.249:6061/application/dev
+          uri: https://10.1.17.13/svn/config
+          username: yinhongliang
+          password: yinhongliang
+          #使用svn必须制定,如果不指定默认为trunk。也就是说默认会去指定的svn路径下的trunk目录中查找
+          default-label: trunk
+      enabled: true
+  profiles:
+    #如果使用svn则必须制定active=subversion, spring-cloud默认使用的是git
+    active: subversion
+server:
+  port: 6061
+eureka:
+  client: 
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}        

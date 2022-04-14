@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: mima-cloud-eureka
+server:
+  port: 8761
+security:
+  basic:
+    #关闭安全验证
+    enabled: true
+  user:
+    name: kevin
+    password: 123456
+eureka: 
+  instance:
+    #实例主机名
+    hostname: localhost
+  client:
+    #不向Eureka注册自己
+    register-with-eureka: false
+    #不检查其他的EurekaServer节点
+    fetch-registry: false

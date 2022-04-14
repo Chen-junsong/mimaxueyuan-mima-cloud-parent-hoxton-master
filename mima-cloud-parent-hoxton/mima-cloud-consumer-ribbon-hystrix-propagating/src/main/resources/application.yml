@@ -1,0 +1,18 @@
+#Propagating the Security Context or using Spring Scopes
+#传播安全上下文和使用Spring Scopes
+#使用HystrixCommand直接的方法,与fallback方法默认情况下是隔离运行的,不再同一个线程中
+#可以通过一些配置来进行设置,使其在同一个线程中执行
+#官网：https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy
+#默认execution.isolation.strategy=THREAD
+spring:
+  application:
+    name: mcc-ribbon-hystrix-propagating
+server:
+  port: 8809
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}

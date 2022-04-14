@@ -1,0 +1,48 @@
+#多服务器HA
+spring:
+  application:
+    name: mima-cloud-eureka-ha
+management:
+  security:
+    enabled: false
+---
+#启动命令nohup java -jar mima-cloud-eureka-ha.jar --spring.profiles.active=peer1 &
+server:
+  port: 8762
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://10.1.22.27:8763/eureka/,http://10.1.22.28:8764/eureka/
+---
+#启动命令nohup java -jar mima-cloud-eureka-ha.jar --spring.profiles.active=peer2 &
+
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://10.1.22.26:8762/eureka/,http://10.1.22.28:8764/eureka/
+---
+#启动命令nohup java -jar mima-cloud-eureka-ha.jar --spring.profiles.active=peer3 &
+server:
+  port: 8764
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://10.1.22.26:8762/eureka/,http://10.1.22.27:8763/eureka/

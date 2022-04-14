@@ -1,0 +1,21 @@
+server:
+  port: 9902
+spring:
+  application:
+    name: mima-cloud-admin-server
+#eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+#暴露所有的监控端点，总是返回健康状况
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-boot-basic-security" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-boot-oauth2-security" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-admin-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-admin-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-config-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-config-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-producer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign-configure" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign-hystrix" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-original" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-hystrix" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-hystrix-propagating" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-without-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka-event" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka-ha" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-gateway-oauth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-hystrix" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-hystrix-turbine" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-jwt-resource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-jwt-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-producer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-oauth2-resource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-oauth2-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-producer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-producer-original" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-zuul" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-zuul-auth" charset="UTF-8" />
+  </component>
+</project>

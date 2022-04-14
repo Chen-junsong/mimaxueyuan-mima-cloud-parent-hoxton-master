@@ -1,0 +1,75 @@
+# 开启resilience4j断路器
+# spring.cloud.circuitbreaker.resilience4j.enabled: true
+# 设置hystrix断路器超时时间
+# hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 2000
+spring:
+  application:
+    name: mima-cloud-gateway
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      routes:
+#         redis-rate-limiter 借助redis进行请求限流
+#         1.要引入以下依赖
+#         <dependency>
+#         <groupId>org.springframework.boot</groupId>
+#         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+#         </dependency>
+#         2. yml中配置redis
+#         spring:
+#           redis:
+#             database: XX
+#             host: XXXX
+#             port: XXXX
+#             password: XXXX
+#         3. 配置KeyResolver,参考实现类:RateLimiteConfig
+#         4. yml中配置spring.cloud.gateway.routes.filters
+#         5.当发生限流时，会向redis中存储两个数据
+#         request_rate_limiter.{key}.timestamp
+#         request_rate_limiter.{key}.tokens
+#         timestamp：存储的是当前时间的秒数，也就是System.currentTimeMillis() / 1000或者Instant.now().getEpochSecond()。
+#         tokens：存储的是当前这秒钟对应的可用令牌数量
+        - id: rate-limit-demo
+          uri: lb://mima-cloud-producer
+          predicates:
+            - Path=/rate/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                # 令牌桶每秒填充平均速率, 允许用户每秒处理多少个请求。
+                redis-rate-limiter.replenishRate: 1
+                # 令牌桶的容量，允许在1s内完成的最大请求数。
+                redis-rate-limiter.burstCapacity: 2
+                # 使用SpEL表达式从Spring容器中获取Bean对象, 查看RateLimiteConfig实现类中的同名方法
+                key-resolver: "#{@pathKeyResolver}"
+#                key-resolver: "#{@ipKeyResolver}"
+#                key-resolver: "#{@userKeyResolver}"
+
+#  The RequestRateLimiter GatewayFilter Factory
+#  The Redis RateLimiter
+#  Modify a Request Body GatewayFilter Factory 测试版本，未来可能改动
+#  Modify a Response Body GatewayFilter Factory 测试版本，未来可能改动
+
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

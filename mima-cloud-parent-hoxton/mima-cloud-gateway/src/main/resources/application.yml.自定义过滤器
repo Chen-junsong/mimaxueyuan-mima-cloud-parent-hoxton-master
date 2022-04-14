@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: mima-cloud-gateway
+  # 如果不使用redis则去掉此段配置，并去掉spring-boot-starter-data-redis-reactive依赖
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      routes:
+        #自定义过滤器
+        -  id: customer_filter_route
+           uri: lb://mima-cloud-producer
+           order: 1
+           predicates:
+             - Path=/**
+           filters:
+             - name: MyAddRequestHeader
+               args:
+                 name: req-kevin-header
+                 value: req-yin.hl
+             - MyAddRequestHeader2=req-a,1
+             - MyAddRequestHeader2=req-b,2
+             - name: MyAddResponseHeader
+               args:
+                 name: rep-kevin-header
+                 value: rep-yin.hl
+             - CheckParameter=password,123456
+             - PostLog
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

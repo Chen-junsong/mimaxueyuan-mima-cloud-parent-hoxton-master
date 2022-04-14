@@ -1,0 +1,47 @@
+debug: true
+spring:
+  application:
+    name: mima-cloud-producer
+server:
+  port: 9905
+eureka:
+  instance:
+    #app-group-name: producer-group
+    appname: producer
+    prefer-ip-address: true
+    metadata-map:
+      myname: kevin
+      myage: 30
+      abc: 123
+    #instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    #instance-id: ${eureka.instance.appname}:${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  client: 
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/
+    #从eureka服务器注册表中获取注册信息的时间间隔（s），默认为30秒
+    registry-fetch-interval-seconds: 30
+    #复制实例变化信息到eureka服务器所需要的时间间隔（s），默认为30秒
+    instance-info-replication-interval-seconds: 30
+    #询问Eureka服务url信息变化的时间间隔（s），默认为300秒(5分钟)
+    eureka-service-url-poll-interval-seconds: 300
+    #最初复制实例信息到eureka服务器所需的时间（s），默认为40秒
+    initial-instance-info-replication-interval-seconds: 40
+    #eureka注册表的内容是否被压缩，默认为true，并且是在最好的网络流量下被压缩
+    g-zip-content: true
+    #eureka需要超时读取之前需要等待的时间，默认为8秒
+    eureka-server-read-timeout-seconds: 8
+    #eureka需要超时连接之前需要等待的时间，默认为5秒
+    eureka-server-connect-timeout-seconds: 5
+    #eureka客户端允许所有eureka服务器连接的总数目，默认是200
+    eureka-server-total-connections: 200
+    #eureka客户端允许eureka服务器主机连接的总数目，默认是50
+    eureka-server-total-connections-per-host: 50
+    #心跳执行程序线程池的大小,默认为5
+    heartbeat-executor-thread-pool-size: 5
+    #心跳执行程序回退相关的属性，是重试延迟的最大倍数值，默认为10
+    heartbeat-executor-exponential-back-off-bound: 10
+    #执行程序缓存刷新线程池的大小，默认为5
+    cache-refresh-executor-thread-pool-size: 5
+    #执行程序指数回退刷新的相关属性，是重试延迟的最大倍数值，默认为10
+    cache-refresh-executor-exponential-back-off-bound: 10

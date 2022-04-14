@@ -1,0 +1,5 @@
+#zuul使用ribbon的时候预加载
+zuul:
+  ribbon:
+    eager-load:
+      enabled: true

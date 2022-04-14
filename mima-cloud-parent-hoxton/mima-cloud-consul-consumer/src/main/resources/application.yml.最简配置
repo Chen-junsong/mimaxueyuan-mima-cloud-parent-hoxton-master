@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: mima-cloud-consul-consumer
+  cloud:
+    consul:
+      host: 10.1.18.202
+      port: 8500
+server:
+  port: 8980

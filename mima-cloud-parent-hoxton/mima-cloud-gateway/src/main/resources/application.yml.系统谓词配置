@@ -1,0 +1,126 @@
+spring:
+  application:
+    name: mima-cloud-gateway
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      routes:
+#        - id: route_test_1
+#          uri: http://127.0.0.1:9905
+#          predicates:
+#            #访问/get/123 转发给 http://127.0.0.1:9905/get/123
+#            - Path=/get/{segment}
+
+#        - id: route_test_2
+#          uri: http://127.0.0.1:9905
+#          predicates:
+#            #访问/get/123 转发给 http://127.0.0.1:9905/get/123
+#            #访问/get/test/123 转发给 http://127.0.0.1:9905/get/test/123
+#            - Path=/get/**
+
+#        - id: route_test_3
+#          # 负载方式，从注册中心获取
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #访问/get/123 转发给 http://mima-cloud-producer/get/123
+#            - Path=/get/**
+
+#        - id: route_test_4
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #访问/get/123 转发给 http://mima-cloud-producer/get/123
+#            - Path=/get/**
+#            #只匹配GET请求
+#            - Method=GET
+
+#        - id: route_test_5
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #只匹配POST请求
+#            - Method=POST
+
+#        - id: route_test_6
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #请求参数为id的则匹配，/get/123?id=xxx都可以匹配
+#            - Query=id
+#            #匹配请求参数为name值为正则kevin.* , 所以xxxx?name=kevin123123可以匹配,xxx?name=123则不匹配
+#            - Query=name,kevin.*
+
+#        - id: after_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - After= 2020-01-15T17:52:00.789+08:00[Asia/Shanghai]
+
+#        - id: before_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Before= 2020-01-15T17:57:00.789+08:00[Asia/Shanghai]
+
+#        - id: between_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #在这个时间区间内可以访问，否则404
+#            - Between= 2020-01-16T10:33:00.789+08:00[Asia/Shanghai],2020-01-16T10:35:00.789+08:00[Asia/Shanghai]
+
+#        - id: cookie_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #Cookie匹配key=name,value=正则
+#            - Cookie= name,kevin.*
+
+#        - id: header_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #Header匹配key=reqId,value=正则
+#            - Header= reqId,9090\d+
+
+#        - id: host_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #请求来源地址，Heder中的Host进行匹配
+#            #- Host= www.mkevin.com
+#            #- Host= abc.mkevin.com,def.mkevin.com
+#            - Host= **.mkevin.com,**.mkevin.org
+
+#        - id: host_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            #远程IP地址匹配, IPV4/子网掩码  IPV6/子网掩码
+#            - RemoteAddr= 10.48.247.1/24
+
+        - id: weight_route_1
+          uri: http://127.0.0.1:9905
+          predicates:
+            # 相同的组，权重为2，20%的交易转发到此处
+            - Weight= group1,2
+
+        - id: weight_route_2
+          uri: http://127.0.0.1:9906
+          predicates:
+            # 相同的组，权重为8，80%的交易转发到此处
+            - Weight= group1,8
+
+server:
+  port: 8801
+eureka:
+  client: 
+    serviceUrl: 
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

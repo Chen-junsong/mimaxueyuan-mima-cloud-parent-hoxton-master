@@ -1,0 +1,10 @@
+debug: true
+spring:
+  application:
+    name: mima-cloud-producer
+server:
+  port: 9905
+eureka:
+  client: 
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/

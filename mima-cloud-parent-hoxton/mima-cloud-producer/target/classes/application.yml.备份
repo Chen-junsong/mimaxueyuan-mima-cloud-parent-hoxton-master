@@ -1,0 +1,24 @@
+debug: true
+spring:
+  application:
+    name: mima-cloud-producer
+    #name: provider-v1 为了测试正则表达式映射的zuul
+    #name: provider-v2 为了测试正则表达式映射的zuul
+server:
+  port: 9904
+eureka:
+  client: 
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+    metadata-map:
+      #自定义元数据,这些数据会注册到eureak服务中,可以再http://127.0.0.1:8761/eureka/apps/mima-cloud-producer中看到
+      name: kevin
+      target: test
+    #作为一个实例，还涉及到一个到注册表的周期性心跳检查（通过客户的serviceUrl）默认的持续时间30秒。
+    #客户机、服务器和客户机在其本地缓存中都具有相同的元数据之前（可能需要3次心跳），客户端无法提供服务。
+    #你可以改变期间使用eureka.instance.leaserenewalintervalinseconds，这将加快这一进程，让客户端连接到其他服务。
+    #在生产中，最好保持默认状态，因为服务器内部有一些计算，可以对租约更新期做出假设。
+    lease-renewal-interval-in-seconds: 30

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: mima-cloud-hystrix-turbine
+server:
+  port: 8810
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}
+turbine:
+  aggregator:
+    #监控单个微服务集群
+    #单独监控地址：http://127.0.0.1:8810/turbine.stream?cluster=MCC-FEIGN-HYSTRIX
+    #单独监控地址：http://127.0.0.1:8810/turbine.stream?cluster=MCC-RIBBON-HYSTRIX
+    #单独监控地址：http://127.0.0.1:8810/turbine.stream?cluster=MCC-RIBBON-HYSTRIX-PROPAGATING
+    #在hystrix仪表盘中监控以上3个地址即可
+    #clusterConfig必须为mcc-feign-hystrix,mcc-ribbon-hystrix,mcc-ribbon-hystrix-propagating对应的大写
+    clusterConfig: MCC-FEIGN-HYSTRIX,MCC-RIBBON-HYSTRIX,MCC-RIBBON-HYSTRIX-PROPAGATING
+  appConfig: mcc-feign-hystrix,mcc-ribbon-hystrix,mcc-ribbon-hystrix-propagating
+  #由于mcc-ribbon-hystrix服务设置了导致home-page-url变化,为了让turbin能够收集到hystrix信息,所以需要配置后缀路径如下
+  instanceUrlSuffix: 
+    MCC-RIBBON-HYSTRIX: /mcc-ribbon-hystrix/hystrix.stream

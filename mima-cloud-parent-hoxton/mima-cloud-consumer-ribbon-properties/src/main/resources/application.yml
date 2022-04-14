@@ -1,0 +1,41 @@
+debug: false
+spring:
+  application:
+    name: mcc-ribbon-properties
+server:
+  port: 8804
+eureka:
+  client:
+    serviceUrl:
+      #eureka的位置
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    #是否提供ip地址
+    prefer-ip-address: true
+    #定义eureka客户端id,回显示在eureka服务中
+    instanceId: ${spring.application.name}:${server.port}
+#预加载配置,默认为懒加载
+ribbon:
+  eager-load:
+    enabled: true
+    clients: mima-cloud-producer,mima-cloud-producer2
+#这里使用服务提供者的instanceName
+mima-cloud-producer:
+  ribbon:
+    # 代表Ribbon使用的负载均衡策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # Max number of retries on the same server (excluding the first try)
+    MaxAutoRetries: 1
+    # Max number of next servers to retry (excluding the first server)
+    MaxAutoRetriesNextServer: 1
+    # Whether all operations can be retried for this client
+    OkToRetryOnAllOperations: true
+    # Interval to refresh the server list from the source
+    ServerListRefreshInterval: 2000
+    # Connect timeout used by Apache HttpClient
+    ConnectTimeout: 3000
+    # Read timeout used by Apache HttpClient
+    ReadTimeout: 3000
+mima-cloud-producer2:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAvoidanceRule

@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: mcc-feign-configure
+server:
+  port: 8807
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}
+feign:
+  compression:
+    request:
+      #开启请求压缩，参见类FeignContentGzipEncodingAutoConfiguration
+      enable: true
+      #设置哪些mine-type的请求被压缩，参见FeignClientEncodingProperties
+      mime-types: text/xml,application/xml,application/json
+      #设置开启压缩的最小请求字节数
+      min-request-size: 2048
+    response: 
+     #开启应答压缩，参见类FeignAcceptGzipEncodingAutoConfiguration
+      enable: true
+#延长hystrix的超时时间,可以解决feign首次访问出现超时错误的问题
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+#禁用超时时间
+#hystrix.command.default.execution.timeout.enabled: false
+#禁用hystrix
+#feign.hystrix.enabled: false
+logging:
+  level:
+    #控制FeignClient的日志输出, 对于@FeignClient接口只能设置为DEBUG
+    com.mimaxueyuan.consumer.feign.FeignTestClient: DEBUG
+    com.mimaxueyuan.consumer.feign.FeignTestClient2: DEBUG

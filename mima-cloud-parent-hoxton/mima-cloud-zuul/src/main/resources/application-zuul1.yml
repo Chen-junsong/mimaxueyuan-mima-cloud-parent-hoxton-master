@@ -1,0 +1,9 @@
+zuul: 
+  #设置某几个service不使用默认的反向代理
+  #ignored-services: mima-cloud-producer,mima-cloud-consumer
+  #设置所有service都不使用默认的反向代理
+  ignored-services: '*'
+  routes:
+    #单独设置某一个服务的反向代理规则
+    mcc-ribbon: /rbn/**
+    mima-cloud-producer: /provider/**

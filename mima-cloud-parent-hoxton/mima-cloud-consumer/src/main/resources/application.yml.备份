@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: mcc
+server:
+  port: 8802
+eureka:
+  client:
+    serviceUrl: 
+      #eureka单节点模式
+      #defaultZone: http://localhost:8761/eureka/
+      #eureka高可用环境下,客户端注册到一个节点上，每个eureka服务端的注册表都会相互同步
+      #defaultZone: http://peer1:8762/eureka/
+      #eureka高可用环境下，客户端应该注册到多个节点，这样更安全
+      defaultZone: http://peer1:8762/eureka/,http://peer2:8763/eureka/,http://peer3:8764/eureka/
+  instance:
+    #在某些情况下，最好的方法是找到服务的IP地址，而不是主机名。设置eureka.instance。优先IP地址为true，当应用程序注册时，它将使用它的IP地址而不是它的主机名。
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}

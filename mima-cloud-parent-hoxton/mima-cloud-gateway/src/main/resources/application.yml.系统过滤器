@@ -1,0 +1,363 @@
+spring:
+  application:
+    name: mima-cloud-gateway
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      # 默认过滤器，使用/getheader接口测试即可
+      default-filters:
+        - AddRequestHeader=X-Request-Default, Gateway
+        - AddResponseHeader=X-Response-Default, Gateway
+      routes:
+        -  id: default_route
+           uri: lb://mima-cloud-producer
+           predicates:
+             -  Path= /**
+
+#        -  id: add_request_header_route1
+#           uri: lb://mima-cloud-producer
+#           predicates:
+#             -  Path= /getheader
+#           filters:
+#             # 添加请求头，静态数据
+#             -  AddRequestHeader= X-Request-id, 999999
+#             -  AddRequestHeader= X-Request-author, kevin
+
+#        - id: add_request_header_route2
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getheader/{seq}
+#          filters:
+#            # 添加请求头，动态参数
+#            - AddRequestHeader= X-Request-id, 999999-{seq}
+#            - AddRequestHeader= X-Request-author, kevin-{seq}
+
+#        - id: SetRequestHeader_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getheader/{seq}
+#          filters:
+#            # 设置请求头，静态参数，没有则新增，如果有则修改
+#            - SetRequestHeader= X-Request-a, abc
+#            - SetRequestHeader= X-Request-b, def
+#            # 添加请求头，动态参数，没有则新增，如果有则修改
+#            - SetRequestHeader= X-Request-id, 999999-{seq}
+#            - SetRequestHeader= X-Request-author, kevin-{seq}
+
+#        - id: RemoveRequestHeader_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/getheader
+#          filters:
+#            # 移除请求头userName参数
+#            - RemoveRequestHeader=reqId
+#            # 移除请求头userName参数
+#            - RemoveRequestHeader=userName
+
+#        - id: MapRequestHeader_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getheaders
+#          filters:
+#            - AddRequestHeader= req-id,888
+#            # MapRequestHeader GatewayFilter工厂接受fromHeader和toHeader参数。
+#            # 它创建一个新的命名头（toHeader），并从传入的HTTP请求中从现有的命名头（fromHeader）中提取值。
+#            # 如果fromHeader不存在，则筛选器没有影响。如果新命名的标头已经存在，则其值会随着新值的增加而增加
+#            - MapRequestHeader= from-Header,to-Header
+
+#        - id: PreserveHostHeader_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/**
+#          filters:
+#            # 在gateway转发请求的时候把原始请求的host头部带上，转发给目标服务，默认是开启的
+#            - PreserveHostHeader
+
+#        - id: add_request_param_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getparam
+#          filters:
+#            # 添加请求参数，静态数据
+#            - AddRequestParameter= param-id, 999999
+#            - AddRequestParameter= param-author, kevin
+#
+#        - id: add_request_param_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getparam/{seq}
+#          filters:
+#            # 添加请求参数，动态参数
+#            - AddRequestParameter= param-id, 999999-{seq}
+#            - AddRequestParameter= param-author, kevin-{seq}
+
+#        - id: RemoveRequestParameter_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/getparam
+#          filters:
+#            # 请求http://192.168.31.80:8801/getparam?id=123&name=kevin&password=9999&email=abc
+#            # 则name,password参数被移除，只剩下id和email参数
+#            # 移除请求参数name
+#            - RemoveRequestParameter=name
+#            # 移除请求参数password
+#            - RemoveRequestParameter=password
+
+#        - id: add_response_header_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getparam
+#          filters:
+#            # 添加应答头参数，静态数据
+#            - AddResponseHeader= rep-id, 999999
+#            - AddResponseHeader= rep-author, kevin
+#
+#        - id: add_response_header_route2
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getparam/{seq}
+#          filters:
+#            # 添加应答头参数，动态参数
+#            - AddResponseHeader= rep-id, 999999-{seq}
+#            - AddResponseHeader= rep-author, kevin-{seq}
+
+#        - id: SetResponseHeader_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            # 错误写法：/getheaderdupe?id={var}
+#            # 正确写法： /getheaderdupe/{var}
+#            - Path=/getheaderdupe/{var}
+#          filters:
+#            # 设置response头部参数，如果存在则修改，不存在则新增，可以使用路径变量
+#            # 设置动态参数值
+#            - SetResponseHeader=rep-id,000-{var}
+#            # 设置静态参数值
+#            - SetResponseHeader=rep-password,******
+#            # 如果参数不存在，则新增
+#            - SetResponseHeader=rep-other,other info
+
+#        - id: RemoveResponseHeader_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/getheaderdupe
+#          filters:
+#            # 移除应答头参数rep-id
+#            - RemoveResponseHeader=rep-id
+#            # 移除应答头参数rep-password
+#            - RemoveResponseHeader=rep-password
+
+#        - id: RewriteResponseHeader_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/getheaderdupe
+#          filters:
+#            # 重写应答头，需要3个参数逗号分隔，分别为：参数名,要匹配的字符串正则, 需要替换为的字符
+#            # 如果需要使用参数${},则必须写为$\{},否则与yaml冲突
+#            # 例如：rep-url=/42?user=ford&password=omg!what&flag=true
+#            # 下面的配置会替换为：/42?user=ford&password=***&flag=true
+#            - RewriteResponseHeader=rep-url, password=[^&]+, password=***
+
+#        - id: dedupe_response_header_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path= /getheaderdupe
+#          filters:
+#            - AddResponseHeader= rep-id, 999999
+#            - AddResponseHeader= rep-author, kevin
+#            # 去除重复的应答头，多项使用空格分隔，逗号之后为去重策略：RETAIN_FIRST保留第一个（默认），RETAIN_LAST（保留最后一个），RETAIN_UNIQUE（保留唯一）
+#            - DedupeResponseHeader= rep-id,RETAIN_FIRST
+#            - DedupeResponseHeader= rep-author,RETAIN_LAST
+
+#        #RewriteLocationResponseHeader过滤器说明
+#        #输入四个参数：stripVersionMode、locationHeaderName、hostValue、protocolsRegex，修改 Response Header 的 Location
+#        #参数 stripVersionMode 可选值如下：
+#        #NEVER_STRIP：版本信息不会被剥离，即使原始请求路径不包含版本
+#        #AS_IN_REQUEST：仅当原始请求路径不包含任何版本时，才会剥离版本【默认】
+#        #ALWAYS_STRIP：即使原始请求路径包含版本，也会剥离版本
+#        #参数 hostValue，如果提供，会替换 Response Header Location 值中的 host:port 部分；如果不提供，则会使用 Request 的 Host 作为默认值
+#        #参数 protocolRegex，协议会与该值匹配，如果不匹配，过滤器不回做任何操作，默认值 http|https|ftp|ftps
+#        - id: RewriteLocationResponseHeader_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/testRewriteLocationResponseHeader
+#          filters:
+#            # 如果请求地址中不包含版本，则Location剥离版本信息
+#            #- RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,
+#            # 任何情况都不剥离版本信息
+#            #- RewriteLocationResponseHeader=NEVER_STRIP, Location, ,
+#            # 任何情况都会剥离版本信息
+#            - RewriteLocationResponseHeader=ALWAYS_STRIP, Location, , http|https|ftp|ftps
+
+#        - id: PrefixPath_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/**
+#          filters:
+#            # 例如请求/get/123接口，实际上转发到/prefix/get/123接口
+#            - PrefixPath=/prefix
+
+        #RedirectTo Filter 配置如果response状态码为3XX，则跳转到指定地址
+        #300	Multiple Choices	多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择
+        #301	Moved Permanently	永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替
+        #302	Found	临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI
+        #303	See Other	查看其它地址。与301类似。使用GET和POST请求查看
+        #304	Not Modified	未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源
+        #305	Use Proxy	使用代理。所请求的资源必须通过代理访问
+        #306	Unused	已经被废弃的HTTP状态码
+        #307	Temporary Redirect	临时重定向。与302类似。使用GET请求重定向
+#        - id: RedirectTo_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/**
+#          filters:
+#            # 跳转到www.baidu.com,并指定状态码为302
+#            - RedirectTo=302,http://www.baidu.com
+#            # 则跳转到www.taobao.com,并指定状态码为301
+#            - RedirectTo=301,http://www.taobao.com
+
+#        - id: SetStatus_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/get/{var}
+#          filters:
+#            # 修改状态码，可以org.springframework.http.HttpStatus枚举，也可以直接写状态码
+#            - SetStatus=NOT_FOUND
+#            #- SetStatus=200
+
+#        - id: RewritePath_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/**
+#          filters:
+#            # 访问/api/getheader  实际访问/getheader
+#            # 转发目标地址必须写/，否则启动报错 The path does not have a leading slash. 路径没有前导斜杠
+#            - RewritePath=/api/getheader,/getheader
+#            # http://192.168.31.80:8801/www/get/user/12123  实际访问/prefix/get/user/12323
+#            # http://192.168.31.80:8801/www/getheader 实际访问/prefix/getheader
+#            # 必须写为$\这种格式，否则变为YAML的变量
+#            - RewritePath=/www/(?<segment>/?.*),/prefix/$\{segment}
+
+#        - id: SetPath_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/prefix/{var1}/{var2}/{var3}
+#          filters:
+#            #允许使用请求路径的模板段来确定真实请求路径
+#            #使用了Spring框架中的URI模板。允许多个匹配段
+#            #例如：请求/prefix/get/user/123123, 真实请求修改为：/get/user/123123
+#            - SetPath=/{var1}/{var2}/{var3}
+
+#        - id: SetPath_route2
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/prefix/{var1}/{var2}/{var3}
+#          filters:
+#            # 允许使用请求路径的模板段来确定真实请求路径
+#            # 使用了Spring框架中的URI模板。允许多个匹配段
+#            # 例如：请求/prefix/get/user/123123, 真实请求修改为：/get/123123
+#            - SetPath=/{var1}/{var3}
+
+#        - id: StripPrefix_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/**
+#          filters:
+#            # 只有1个参数，从前向后去掉几个部件，请求/api/get/123, 实际请求/get/123
+#            - StripPrefix=1
+#            # 从前向后去掉2个部件，请求/api/get/123, 实际请求/123
+#            #- StripPrefix=2
+
+#        - id: Retry_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/testRetry
+#          filters:
+#            # 过滤器名称
+#            - name: Retry
+#              #参数
+#              args:
+#                # 重试次数
+#                retries: 3
+#                # 什么样的状态码进行重试
+#                # org.springframework.http.HttpStatus.Series枚举，与statuses至少配置一个
+#                series:
+#                  - SERVER_ERROR
+#                # 什么样的状态码重试
+#                statuses:
+#                  - BAD_GATEWAY
+#                  - METHOD_NOT_ALLOWED
+#                # 什么样的方法需要重试
+#                methods:
+#                  - GET
+#                  - POST
+#                # 什么样的异常需要重试
+#                exceptions:
+#                  - java.io.IOException
+#                  - java.util.concurrent.TimeoutException
+#                # 退避配置，设置重试间隔，例如每隔多长时间重试一次，第一次立即重试，第二次10秒，第三次30秒
+#                backoff:
+#                  firstBackoff: 10ms
+#                  maxBackoff: 50ms
+#                  factor: 2
+#                  basedOnPreviousValue: false
+
+#        - id: RequestSize_route1
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/testRequestSize
+#          filters:
+#            # 过滤器名称
+#            - name: RequestSize
+#              #参数
+#              args:
+#                # 控制请求的大小，请求过大会被拦截，返回413  Request Entity Too Large
+#                # 请求最大，5000000 Bytes，约5M
+#                # 设置为1k，请求过大时提示： Request size is larger than permissible limit. Request size is 385.4 kB where permissible limit is 1.0 kB
+#                maxSize: 1000
+
+#        - id: SaveSession_route
+#          uri: lb://mima-cloud-producer
+#          predicates:
+#            - Path=/testSaveSession
+#          filters:
+#            # 这个过滤器的实现类是：SaveSessionGatewayFilterFactory，在请求向下面的执链发送之前，
+#            # 会强制调用WebSession:save操作，这是一个特殊的使用，比如当集成Spring Session框架时，
+#            # 会延迟存储数据，需要保证session的状态已经被保存。
+#            # Spring Session会将session信息存储到Redis中，以实现共享session功能。
+#            # 如要项目集成了Spring Session中的Spring Security框架，
+#            # 希望安全验证信息可以转发到远程应用，那么这个配置是必须的。
+#            - SaveSession
+
+#  The RemoveHopByHopHeadersFilter GatewayFilter Factory  #官方文档
+#  The SecureHeaders GatewayFilter Factory 官方文档
+
+#  The Hystrix GatewayFilter Factory
+#  The Spring Cloud CircuitBreaker GatewayFilter Factory
+#  The FallbackHeaders GatewayFilter Factory
+#  The RequestRateLimiter GatewayFilter Factory
+#  The Redis RateLimiter
+#  Modify a Request Body GatewayFilter Factory 测试版本，未来可能改动
+#  Modify a Response Body GatewayFilter Factory 测试版本，未来可能改动
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

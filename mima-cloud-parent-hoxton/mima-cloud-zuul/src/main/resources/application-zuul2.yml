@@ -1,0 +1,11 @@
+zuul: 
+  routes:
+    #单独设置某一个服务的反向代理规则,名字可以随便,只要不重复即可
+    providers: 
+      #代理路径
+      path: /pro/**
+      #需要反向代理的serviceId
+      serviceId: mima-cloud-producer
+    ribbons:
+      path: /rbn/**
+      serviceId: mcc-ribbon

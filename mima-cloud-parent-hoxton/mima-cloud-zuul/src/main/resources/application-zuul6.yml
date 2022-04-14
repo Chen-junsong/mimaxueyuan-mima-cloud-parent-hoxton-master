@@ -1,0 +1,9 @@
+management:
+  security:
+    #关闭安全设置，默认为true, 否则无法访问/routes管理端点
+    #使用如下两个地址可以查看zuul的代理信息
+    #/routes
+    #/routes?format=details
+    enabled: false
+zuul:
+  prefix: /api

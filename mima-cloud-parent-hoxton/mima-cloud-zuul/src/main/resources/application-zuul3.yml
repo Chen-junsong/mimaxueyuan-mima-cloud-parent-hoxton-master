@@ -1,0 +1,12 @@
+zuul: 
+  routes:
+    #单独设置某一个服务的反向代理规则,名字可以随便,只要不重复即可
+    providers: 
+      #代理路径
+      path: /pro-url/**
+      #可以不是用serviceId,而是使用需要反向代理的服务地址
+      #使用这种url的方式将不会支持Hystrix断路器和Ribbon负载均衡
+      url: http://127.0.0.1:9908
+    ribbons: 
+      path: /ribbon-url/**
+      url: http://127.0.0.1:8803

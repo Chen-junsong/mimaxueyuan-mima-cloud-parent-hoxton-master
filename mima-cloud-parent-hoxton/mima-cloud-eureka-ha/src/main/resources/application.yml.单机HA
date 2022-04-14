@@ -1,0 +1,48 @@
+#官方文档翻译：在本例中，我们有一个YAML文件，它可以在两个主机(peer1和peer2)上运行相同的服务器，在不同的Spring配置文件中运行它。
+#通过操纵/etc/hosts来解析主机名，您可以使用这个配置来测试单个主机上的对等感知(在生产中没有多少价值)。
+#如果您在一台知道自己主机名的机器上运行主机名(默认情况下使用java.net.inetaddress)，则不需要主机名。
+eureka:
+  instance:
+    appname: mima-cloud-eureka-ha
+spring:
+  profiles:
+    active: peer3
+---
+server:
+  port: 8762
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: peer1
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8763/eureka/,http://peer3:8764/eureka/
+---
+server:
+  port: 8763
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: peer2
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8762/eureka/,http://peer3:8764/eureka/
+---
+server:
+  port: 8764
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: peer3
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8762/eureka/,http://peer2:8763/eureka/

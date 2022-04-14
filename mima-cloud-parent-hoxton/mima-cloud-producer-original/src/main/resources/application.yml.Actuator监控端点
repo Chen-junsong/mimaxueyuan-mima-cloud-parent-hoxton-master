@@ -1,0 +1,18 @@
+debug: true
+server:
+  port: 9904
+#是否关闭敏感信息校验
+management:
+  security:
+    enabled: false
+#info.配置用于控制/info这个端点的返回信息
+info: 
+  app: 
+    name: spring-boot-hello
+    version: v1.0.0
+#用于控制/shutdown端点是否可用
+endpoints:
+  shutdown:
+    enabled: true
+  
+  

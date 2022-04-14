@@ -1,0 +1,15 @@
+server:
+  port: 8804
+spring:
+  application:
+    name: mcc-ribbon-without-eureka
+ribbon:
+  eureka:
+    #ribbon中禁用eureka
+   enabled: false
+mima-cloud-producer:
+  ribbon:
+    #当不依赖eureka进行负载均衡的视乎,配置客户端provider的服务列表
+    listOfServers: 127.0.0.1:9907,127.0.0.1:9908,127.0.0.1:9905,127.0.0.1:9906
+    #代表Ribbon使用的负载均衡策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

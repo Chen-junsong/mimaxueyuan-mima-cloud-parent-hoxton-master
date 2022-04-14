@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: mima-cloud-consumer
+server:
+  port: 8802
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/

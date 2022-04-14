@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: mima-cloud-consul-producer
+  cloud:
+    consul:
+      host: 10.1.18.202
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        #这个必须有，否则使用的是主机名而不是真实IP，会导致无法找到服务、健康检查失败
+        prefer-ip-address: true
+        tags: version=1.0,author=kevin,mail=mkevin@vip.163.com
+        # 这个必须配置正确，否则会导致无法健康检查，consul认为服务不正常
+        health-check-path: /health
+        # 心跳检查频率
+        health-check-interval: 30s
+        # 心跳检查超时时间
+        health-check-timeout: 10s
+        # 是否跳过证书检查
+        health-check-tls-skip-verify: true
+        #是否将自己注册到Consul
+        register: true
+server:
+  port: 8981
+debug: true

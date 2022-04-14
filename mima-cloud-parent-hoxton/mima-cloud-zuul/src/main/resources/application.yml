@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: mima-cloud-zuul
+  profiles:
+    active: zuul1
+server:
+  port: 7701
+eureka:
+  client: 
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+#logging:
+  #level:
+    #org.springframework.cloud.netflix.zuul: debug

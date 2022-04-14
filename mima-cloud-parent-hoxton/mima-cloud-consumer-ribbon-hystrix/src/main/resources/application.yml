@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: mcc-ribbon-hystrix
+server:
+  port: 8807
+  context-path: /mcc-ribbon-hystrix
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}
+    #由于设置了context-path,所以必须设置home-page-url-path,并且保持一致
+    #否则turbine将无法采集到Hystrix数据
+    home-page-url-path: ${server.context-path}
+    #如下两项可以不配置没有影响
+  health-check-url: ${server.context-path}/health
+  status-page-url:  ${server.context-path}/info

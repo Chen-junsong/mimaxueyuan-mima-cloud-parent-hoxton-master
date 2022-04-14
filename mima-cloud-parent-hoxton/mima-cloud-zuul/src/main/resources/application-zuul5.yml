@@ -1,0 +1,7 @@
+zuul:
+  #给所有的代理路径增加前缀,需要使用/api/${serviceId}/**进行访问
+  prefix: /api
+  strip-prefix: false
+logging:
+  level:
+    com.netflix: debug

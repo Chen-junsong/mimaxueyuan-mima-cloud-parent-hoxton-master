@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mima-cloud-consumer-ribbon-config" />
+        <module name="mima-cloud-consumer-ribbon" />
+        <module name="mima-boot-basic-security" />
+        <module name="mima-cloud-admin-server" />
+        <module name="mima-cloud-consumer-ribbon-properties" />
+        <module name="mima-boot-oauth2-security" />
+        <module name="mima-cloud-nacos-producer" />
+        <module name="mima-cloud-consumer-ribbon-hystrix" />
+        <module name="mima-cloud-consumer-feign-hystrix" />
+        <module name="mima-cloud-consumer-feign" />
+        <module name="mima-cloud-consumer-fegin-configure" />
+        <module name="mima-cloud-consumer-ribbon-hystrix-propagating" />
+        <module name="mima-cloud-admin-client" />
+        <module name="mima-cloud-jwt-server" />
+        <module name="mima-cloud-jwt-resource" />
+        <module name="mima-cloud-oauth2-resource" />
+        <module name="mima-cloud-nacos-consumer" />
+        <module name="mima-cloud-consul-config" />
+        <module name="mima-cloud-consul-producer" />
+        <module name="mima-cloud-eureka-ha" />
+        <module name="mima-cloud-eureka" />
+        <module name="mima-cloud-zuul-auth" />
+        <module name="mima-cloud-consumer-original" />
+        <module name="mima-cloud-config-server" />
+        <module name="mima-cloud-eureka-event" />
+        <module name="mima-cloud-gateway" />
+        <module name="mima-cloud-nacos-config" />
+        <module name="mima-cloud-consumer-ribbon-without-eureka" />
+        <module name="mima-cloud-consul-consumer" />
+        <module name="mima-cloud-consumer" />
+        <module name="mima-cloud-config-client" />
+        <module name="mima-cloud-hystrix-turbine" />
+        <module name="mima-cloud-producer-original" />
+        <module name="mima-cloud-hystrix" />
+        <module name="mima-cloud-gateway-oauth" />
+        <module name="mima-cloud-producer" />
+        <module name="mima-cloud-zuul" />
+        <module name="mima-cloud-oauth2-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mima-boot-basic-security" target="1.8" />
+      <module name="mima-boot-oauth2-security" target="1.8" />
+      <module name="mima-cloud-admin-client" target="1.8" />
+      <module name="mima-cloud-admin-server" target="1.8" />
+      <module name="mima-cloud-config-client" target="1.8" />
+      <module name="mima-cloud-config-server" target="1.8" />
+      <module name="mima-cloud-consul-config" target="1.8" />
+      <module name="mima-cloud-consul-consumer" target="1.8" />
+      <module name="mima-cloud-consul-producer" target="1.8" />
+      <module name="mima-cloud-consumer" target="1.8" />
+      <module name="mima-cloud-consumer-fegin-configure" target="1.8" />
+      <module name="mima-cloud-consumer-feign" target="1.8" />
+      <module name="mima-cloud-consumer-feign-hystrix" target="1.8" />
+      <module name="mima-cloud-consumer-original" target="1.8" />
+      <module name="mima-cloud-consumer-ribbon" target="1.8" />
+      <module name="mima-cloud-consumer-ribbon-config" target="1.8" />
+      <module name="mima-cloud-consumer-ribbon-hystrix" target="1.8" />
+      <module name="mima-cloud-consumer-ribbon-hystrix-propagating" target="1.8" />
+      <module name="mima-cloud-consumer-ribbon-properties" target="1.8" />
+      <module name="mima-cloud-consumer-ribbon-without-eureka" target="1.8" />
+      <module name="mima-cloud-eureka" target="1.8" />
+      <module name="mima-cloud-eureka-event" target="1.8" />
+      <module name="mima-cloud-eureka-ha" target="1.8" />
+      <module name="mima-cloud-gateway" target="1.8" />
+      <module name="mima-cloud-gateway-oauth" target="1.8" />
+      <module name="mima-cloud-hystrix" target="1.8" />
+      <module name="mima-cloud-hystrix-turbine" target="1.8" />
+      <module name="mima-cloud-jwt-resource" target="1.8" />
+      <module name="mima-cloud-jwt-server" target="1.8" />
+      <module name="mima-cloud-nacos-config" target="1.8" />
+      <module name="mima-cloud-nacos-consumer" target="1.8" />
+      <module name="mima-cloud-nacos-producer" target="1.8" />
+      <module name="mima-cloud-oauth2-resource" target="1.8" />
+      <module name="mima-cloud-oauth2-server" target="1.8" />
+      <module name="mima-cloud-parent-hoxton" target="1.8" />
+      <module name="mima-cloud-producer" target="1.8" />
+      <module name="mima-cloud-producer-original" target="1.8" />
+      <module name="mima-cloud-zuul" target="1.8" />
+      <module name="mima-cloud-zuul-auth" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mima-boot-basic-security" options="-parameters" />
+      <module name="mima-boot-oauth2-security" options="-parameters" />
+      <module name="mima-cloud-admin-client" options="-parameters" />
+      <module name="mima-cloud-admin-server" options="-parameters" />
+      <module name="mima-cloud-config-client" options="-parameters" />
+      <module name="mima-cloud-config-server" options="-parameters" />
+      <module name="mima-cloud-consul-config" options="-parameters" />
+      <module name="mima-cloud-consul-consumer" options="-parameters" />
+      <module name="mima-cloud-consul-producer" options="-parameters" />
+      <module name="mima-cloud-consumer" options="-parameters" />
+      <module name="mima-cloud-consumer-fegin-configure" options="-parameters" />
+      <module name="mima-cloud-consumer-feign" options="-parameters" />
+      <module name="mima-cloud-consumer-feign-hystrix" options="-parameters" />
+      <module name="mima-cloud-consumer-original" options="-parameters" />
+      <module name="mima-cloud-consumer-ribbon" options="-parameters" />
+      <module name="mima-cloud-consumer-ribbon-config" options="-parameters" />
+      <module name="mima-cloud-consumer-ribbon-hystrix" options="-parameters" />
+      <module name="mima-cloud-consumer-ribbon-hystrix-propagating" options="-parameters" />
+      <module name="mima-cloud-consumer-ribbon-properties" options="-parameters" />
+      <module name="mima-cloud-consumer-ribbon-without-eureka" options="-parameters" />
+      <module name="mima-cloud-eureka" options="-parameters" />
+      <module name="mima-cloud-eureka-event" options="-parameters" />
+      <module name="mima-cloud-eureka-ha" options="-parameters" />
+      <module name="mima-cloud-gateway" options="-parameters" />
+      <module name="mima-cloud-gateway-oauth" options="-parameters" />
+      <module name="mima-cloud-hystrix" options="-parameters" />
+      <module name="mima-cloud-hystrix-turbine" options="-parameters" />
+      <module name="mima-cloud-jwt-resource" options="-parameters" />
+      <module name="mima-cloud-jwt-server" options="-parameters" />
+      <module name="mima-cloud-nacos-config" options="-parameters" />
+      <module name="mima-cloud-nacos-consumer" options="-parameters" />
+      <module name="mima-cloud-nacos-producer" options="-parameters" />
+      <module name="mima-cloud-oauth2-resource" options="-parameters" />
+      <module name="mima-cloud-oauth2-server" options="-parameters" />
+      <module name="mima-cloud-producer" options="-parameters" />
+      <module name="mima-cloud-producer-original" options="-parameters" />
+      <module name="mima-cloud-zuul" options="-parameters" />
+      <module name="mima-cloud-zuul-auth" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: mima-cloud-eureka
+server:
+  port: 8761
+eureka: 
+  instance:
+    #实例主机名
+    hostname: localhost

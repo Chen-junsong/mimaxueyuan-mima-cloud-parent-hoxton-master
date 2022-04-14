@@ -1,0 +1,19 @@
+server:
+  port: 9903
+spring:
+  application:
+    name: mima-cloud-admin-client
+#不使用注册中心时使用
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:9902
+#暴露所有的监控端点，总是返回健康状况
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

@@ -1,0 +1,19 @@
+
+Z	java:S106+"9Replace this use of System.out or System.err by a logger.(´Ÿ¦ÿÿÿÿÿÿ8¢ÚöÙú/
+>
+java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ8¢ÚöÙú/
+>
+java:S1116#"Remove this empty statement.(ôŸìúÿÿÿÿ8¢ÚöÙú/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(·§ª´şÿÿÿÿ8¢ÚöÙú/
+>
+java:S1116."Remove this empty statement.(ôŸìúÿÿÿÿ8¢ÚöÙú/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(èÈ™õüÿÿÿÿ8¢ÚöÙú/
+N
+java:S1602",Remove useless curly braces around statement(›±–¤øÿÿÿÿ8¢ÚöÙú/
+N
+java:S1602*",Remove useless curly braces around statement(›±–¤øÿÿÿÿ8¢ÚöÙú/
+N
+java:S1602",Remove useless curly braces around statement(›±–¤øÿÿÿÿ8¢ÚöÙú/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(´•¾™8¢ÚöÙú/
+U	java:S106)"9Replace this use of System.out or System.err by a logger.(¹ÉĞ»8¢ÚöÙú/
+U	java:S106 "9Replace this use of System.out or System.err by a logger.(¿şğ®8¢ÚöÙú/

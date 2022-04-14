@@ -1,0 +1,105 @@
+# 开启resilience4j断路器
+# spring.cloud.circuitbreaker.resilience4j.enabled: true
+# 设置hystrix断路器超时时间
+# hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 2000
+spring:
+  application:
+    name: mima-cloud-gateway
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+#      default-filters:
+#        # 设置默认熔断器
+#        - name: Hystrix
+#          args:
+#            # 熔断器的名字，无所谓
+#            name: fallbackcmd
+#            # 发生熔断之后要跳转的地址
+#            fallbackUri: forward:/fallbackHysrix
+      routes:
+        # The Hystrix GatewayFilter Factory 说明
+        # 只支持hystrix断路器的过滤器，需要引入spring-cloud-starter-netflix-hystrix
+        -  id: Hystrix_route
+           uri: lb://mima-cloud-producer
+           predicates:
+             -  Path= /timeout
+           filters:
+             # 设置熔断器
+             - name: Hystrix
+               args:
+                 # 熔断器的名字，无所谓
+                 name: fallbackcmd
+                 # 发生熔断之后要跳转的地址，这个fallbackHysrix接口要写在Gateway当前项目中，而不是其他项目中
+                 fallbackUri: forward:/fallbackHysrix
+
+        #  The FallbackHeaders GatewayFilter Factory  参照官方文档
+        -  id: Hystrix-fallback
+           uri: http://localhost:9905
+           order: 2
+           predicates:
+             - Path=/fallbackHysrix
+           filters:
+             # 将fallback转发到指定的服务器，并添加FallbackHeader信息到
+             - name: FallbackHeaders
+               args:
+                 # 可以修改默认添加的Header名称，也可以不配置
+                 executionExceptionTypeHeaderName: Execution-Exception-Type
+                 executionExceptionMessageHeaderName: Execution-Exception-Message
+                 rootCauseExceptionTypeHeaderName: Root-Cause-Exception-Type
+                 rootCauseExceptionMessageHeaderName: Root-Cause-Exception-Message
+
+        # The Spring Cloud CircuitBreaker GatewayFilter Factory 说明
+        # Spring Cloud断路器网关筛选器工厂使用Spring Cloud断路器API在断路器中包装网关路由。
+        # Spring Cloud CircuitBreaker支持可与Spring Cloud Gateway一起使用的两个库Hystrix和Resilience4J。
+        # 由于Netflix已将Hystrix置于仅维护模式，因此建议您使用Resilience4J。
+        # 要启用Spring Cloud断路器过滤器
+        # 需要将Spring-Cloud-starter-CircuitBreaker-reactor-resilience4j或 Spring Cloud starter netflix hystrix放在类路径上
+        # resilience4j文档 https://cloud.spring.io/spring-cloud-circuitbreaker/reference/html/spring-cloud-circuitbreaker.html
+        # hystrix 文档 https://cloud.spring.io/spring-cloud-netflix/reference/html/
+        # 需要开启
+#        -  id: ingredients
+#           uri: lb://mima-cloud-producer
+#           order: 1
+#           predicates:
+#             -  Path=/timeout
+#           filters:
+#             # 设置熔断器
+#             - name: CircuitBreaker
+#               args:
+#                 # 熔断器的名字，无所谓
+#                 name: testCircuitBreaker
+#                 # 发生熔断之后要跳转的地址
+#                 fallbackUri: forward:/fallbackCircuitBreaker
+#        - id: ingredients-fallback
+#          uri: http://localhost:9905
+#          order: 2
+#          predicates:
+#            - Path=/fallbackCircuitBreaker
+#          filters:
+#            - name: FallbackHeaders
+#              args:
+#                executionExceptionTypeHeaderName: Test-Header
+
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

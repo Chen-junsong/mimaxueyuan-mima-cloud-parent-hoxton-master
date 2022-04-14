@@ -1,0 +1,14 @@
+server:
+  port: 9902
+spring:
+  application:
+    name: mima-cloud-admin-server
+#暴露所有的监控端点，总是返回健康状况
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-boot-basic-security/mima-boot-basic-security.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-boot-basic-security/mima-boot-basic-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-boot-oauth2-security/mima-boot-oauth2-security.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-boot-oauth2-security/mima-boot-oauth2-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-admin-client/mima-cloud-admin-client.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-admin-client/mima-cloud-admin-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-admin-server/mima-cloud-admin-server.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-admin-server/mima-cloud-admin-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-config-client/mima-cloud-config-client.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-config-client/mima-cloud-config-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-config-server/mima-cloud-config-server.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-config-server/mima-cloud-config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-config/mima-cloud-consul-config.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-config/mima-cloud-consul-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-consumer/mima-cloud-consul-consumer.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-consumer/mima-cloud-consul-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-producer/mima-cloud-consul-producer.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consul-producer/mima-cloud-consul-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer/mima-cloud-consumer.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer/mima-cloud-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign-configure/mima-cloud-consumer-fegin-configure.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign-configure/mima-cloud-consumer-fegin-configure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign/mima-cloud-consumer-feign.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign/mima-cloud-consumer-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign-hystrix/mima-cloud-consumer-feign-hystrix.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-feign-hystrix/mima-cloud-consumer-feign-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-original/mima-cloud-consumer-original.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-original/mima-cloud-consumer-original.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon/mima-cloud-consumer-ribbon.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon/mima-cloud-consumer-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-config/mima-cloud-consumer-ribbon-config.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-config/mima-cloud-consumer-ribbon-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-hystrix/mima-cloud-consumer-ribbon-hystrix.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-hystrix/mima-cloud-consumer-ribbon-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-hystrix-propagating/mima-cloud-consumer-ribbon-hystrix-propagating.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-hystrix-propagating/mima-cloud-consumer-ribbon-hystrix-propagating.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-properties/mima-cloud-consumer-ribbon-properties.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-properties/mima-cloud-consumer-ribbon-properties.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-without-eureka/mima-cloud-consumer-ribbon-without-eureka.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-consumer-ribbon-without-eureka/mima-cloud-consumer-ribbon-without-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka/mima-cloud-eureka.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka/mima-cloud-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka-event/mima-cloud-eureka-event.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka-event/mima-cloud-eureka-event.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka-ha/mima-cloud-eureka-ha.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-eureka-ha/mima-cloud-eureka-ha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-gateway/mima-cloud-gateway.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-gateway/mima-cloud-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-gateway-oauth/mima-cloud-gateway-oauth.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-gateway-oauth/mima-cloud-gateway-oauth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-hystrix/mima-cloud-hystrix.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-hystrix/mima-cloud-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-hystrix-turbine/mima-cloud-hystrix-turbine.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-hystrix-turbine/mima-cloud-hystrix-turbine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-jwt-resource/mima-cloud-jwt-resource.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-jwt-resource/mima-cloud-jwt-resource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-jwt-server/mima-cloud-jwt-server.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-jwt-server/mima-cloud-jwt-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-config/mima-cloud-nacos-config.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-config/mima-cloud-nacos-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-consumer/mima-cloud-nacos-consumer.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-consumer/mima-cloud-nacos-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-producer/mima-cloud-nacos-producer.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-nacos-producer/mima-cloud-nacos-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-oauth2-resource/mima-cloud-oauth2-resource.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-oauth2-resource/mima-cloud-oauth2-resource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-oauth2-server/mima-cloud-oauth2-server.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-oauth2-server/mima-cloud-oauth2-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-parent-hoxton.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-parent-hoxton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-producer/mima-cloud-producer.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-producer/mima-cloud-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-producer-original/mima-cloud-producer-original.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-producer-original/mima-cloud-producer-original.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-zuul/mima-cloud-zuul.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-zuul/mima-cloud-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-zuul-auth/mima-cloud-zuul-auth.iml" filepath="$PROJECT_DIR$/mima-cloud-parent-hoxton/mima-cloud-zuul-auth/mima-cloud-zuul-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/mimaxueyuan-mima-cloud-parent-hoxton-master.iml" filepath="$PROJECT_DIR$/.idea/mimaxueyuan-mima-cloud-parent-hoxton-master.iml" />
+    </modules>
+  </component>
+</project>

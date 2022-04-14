@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mkevin</groupId>
+	<artifactId>mima-cloud-parent-hoxton</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+	</properties>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.0.RELEASE</version>
+	</parent>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>mima-cloud-producer</module>
+		<module>mima-cloud-eureka</module>
+		<module>mima-cloud-eureka-ha</module>
+		<module>mima-cloud-eureka-event</module>
+		<module>mima-cloud-consumer</module>
+		<module>mima-cloud-consumer-ribbon</module>
+		<module>mima-cloud-consumer-ribbon-config</module>
+		<module>mima-cloud-consumer-ribbon-properties</module>
+		<module>mima-cloud-consumer-ribbon-without-eureka</module>
+		<module>mima-cloud-consumer-feign</module>
+		<module>mima-cloud-consumer-feign-configure</module>
+		<module>mima-cloud-consumer-ribbon-hystrix</module>
+		<module>mima-cloud-consumer-feign-hystrix</module>
+		<module>mima-cloud-consumer-ribbon-hystrix-propagating</module>
+		<module>mima-cloud-hystrix-turbine</module>
+		<module>mima-cloud-hystrix</module>
+		<module>mima-cloud-zuul</module>
+		<module>mima-cloud-config-server</module>
+		<module>mima-cloud-config-client</module>
+		<module>mima-cloud-producer-original</module>
+		<module>mima-cloud-consumer-original</module>
+		<module>mima-cloud-consul-consumer</module>
+		<module>mima-cloud-consul-producer</module>
+		<module>mima-cloud-consul-config</module>
+		<module>mima-cloud-nacos-consumer</module>
+		<module>mima-cloud-nacos-producer</module>
+		<module>mima-cloud-nacos-config</module>
+		<module>mima-cloud-admin-server</module>
+		<module>mima-cloud-admin-client</module>
+		<module>mima-cloud-gateway</module>
+		<module>mima-boot-basic-security</module>
+		<module>mima-boot-oauth2-security</module>
+		<module>mima-cloud-oauth2-server</module>
+		<module>mima-cloud-oauth2-resource</module>
+		<module>mima-cloud-zuul-auth</module>
+		<module>mima-cloud-gateway-oauth</module>
+		<module>mima-cloud-jwt-server</module>
+		<module>mima-cloud-jwt-resource</module>
+	</modules>
+</project>

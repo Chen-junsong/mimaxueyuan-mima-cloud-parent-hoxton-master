@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: mcc-feigin
+server:
+  port: 8806
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}

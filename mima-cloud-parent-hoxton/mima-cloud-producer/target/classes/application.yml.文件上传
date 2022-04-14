@@ -1,0 +1,19 @@
+debug: true
+spring:
+  application:
+    name: mima-cloud-producer
+  #文件上传必须配置
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+server:
+  port: 9907
+eureka:
+  client: 
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port} 

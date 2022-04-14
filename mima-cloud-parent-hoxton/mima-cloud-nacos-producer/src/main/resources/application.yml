@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: mima-cloud-nacos-producer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.1.17.202:8848,10.1.18.201:8848,10.1.18.202:8848
+        weight: 2
+server:
+  port: 8981
+debug: true

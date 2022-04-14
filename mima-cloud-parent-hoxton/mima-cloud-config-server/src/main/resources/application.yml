@@ -1,0 +1,32 @@
+security:
+  basic:
+    enabled: false
+spring:
+  application:
+    name: mima-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          #git远程地址
+          uri: https://gitee.com/mimaxueyuan/kevin-config-file
+          #搜索目录
+          search-paths: /**
+          #git默认分支
+          default-label: master
+          #如果为私有仓库,需要设置用户名、密码
+          #username: 
+          #password:
+      #是否开启配置中心 
+      enabled: true
+      #默认的分支
+      label: master
+server:
+  port: 6063
+eureka:
+  client: 
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}        

@@ -1,0 +1,4 @@
+#只要加入了security包则自动开启了默认安全认证,密码随机生成
+security:
+  basic:
+    enabled: false  #默认为true

@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: mima-cloud-gateway
+  # 如果不使用redis则去掉此段配置，并去掉spring-boot-starter-data-redis-reactive依赖
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      # YML跨域配置： (注意：yml配置方式与com.mkevin.gateway.config.CorsConfig类选用一种使用)
+      # 加载入口：org.springframework.cloud.gateway.config.GatewayAutoConfiguration.globalCorsProperties
+      # 对应属性类：org.springframework.cloud.gateway.config.GlobalCorsProperties
+      globalcors:
+        corsConfigurations:
+          #允许跨域的请求路径
+          '[/**]':
+            #允许的来源
+            allowedOrigins: "*"
+            #允许的方法
+            allowedMethods:
+              - GET
+              - POST
+            #是否允许携带cookie
+            allowCredentials: true
+            #允许http请求携带的header
+            allowedHeaders:
+              - Content-Type
+            #response应答可以暴露的header
+            exposedHeaders:
+              - Content-Type
+            #预检命令缓存时常，单位秒
+            maxAge: 18000
+      routes:
+        #自定义过滤器
+        -  id: customer_filter_route
+           uri: lb://mima-cloud-producer
+           order: 1
+           predicates:
+             - Path=/**
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

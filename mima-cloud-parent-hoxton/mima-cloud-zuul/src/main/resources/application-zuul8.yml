@@ -1,0 +1,8 @@
+#禁用系统的过滤器:zuul.<核心路由名称>.<filterType>.disable=true|false
+zuul:
+  DebugFilter: 
+    pre:
+      disable: false
+  SimpleHostRoutingFilter: 
+    route:
+      disable: false

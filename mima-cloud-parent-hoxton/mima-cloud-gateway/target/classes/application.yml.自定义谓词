@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: mima-cloud-gateway
+  # 如果不使用redis则去掉此段配置，并去掉spring-boot-starter-data-redis-reactive依赖
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      routes:
+        #自定义谓词UserNameCheckRoutePredicateFactory的配置使用
+        -  id: Auth_route
+           uri: lb://mima-cloud-producer
+           order: 1
+           predicates:
+             - Path=/**
+             # name配置为UserNameCheckRoutePredicateFactory类前缀UserNameCheck
+             # 只有访问http://192.168.31.80:8801/getheader?userName=kevin 才可以访问，否则为404
+             # 必须携带userName请求参数，并且值为kevin
+             - name: UserNameCheck
+               args:
+                 name: kevin
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

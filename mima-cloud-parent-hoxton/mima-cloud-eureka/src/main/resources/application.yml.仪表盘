@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: mima-cloud-eureka
+server:
+  port: 8761
+eureka:
+  #此处设置会改变eureka控制台的显示
+  datacenter: cloud
+  #此处设置会改变eureka控制台的显示
+  environment: prod
+  dashboard:
+    #控制台路径
+    path: /dashboard
+    #是否启用控制台
+    enabled: true
+  instance:
+    #实例主机名
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+security:
+  basic:
+    #关闭安全验证
+    enabled: false

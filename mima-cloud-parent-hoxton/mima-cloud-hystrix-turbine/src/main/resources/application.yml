@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: mima-cloud-hystrix-turbine
+server:
+  port: 8810
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${server.port}
+
+turbine:
+  aggregator:
+    #监控所有微服务集群
+    #监控地址：http://127.0.0.1:8810/turbine.stream
+    #在hystrix仪表盘中监控上面的地址即可
+    clusterConfig: default
+  #要监控的微服务serviceId   
+  appConfig: mcc-feign-hystrix,mcc-ribbon-hystrix,mcc-ribbon-hystrix-propagating
+  clusterNameExpression: "'default'"

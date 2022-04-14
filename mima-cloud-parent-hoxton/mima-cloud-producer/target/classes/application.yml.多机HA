@@ -1,0 +1,15 @@
+debug: true
+spring:
+  application:
+    name: mima-cloud-producer
+server:
+  port: 9906
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  client: 
+    serviceUrl: 
+      #如果需要使用主机名,则需要配置服务器的/etc/hosts文件
+      #defaultZone: http://10.1.22.26:8762/eureka/
+      defaultZone: http://10.1.22.26:8762/eureka/,http://10.1.22.27:8763/eureka/,http://10.1.22.28:8764/eureka/

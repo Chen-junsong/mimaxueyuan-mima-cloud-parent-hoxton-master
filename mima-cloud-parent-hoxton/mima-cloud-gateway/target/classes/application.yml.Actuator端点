@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: mima-cloud-gateway
+  redis:
+    database: 1
+    host: 10.56.21.3
+    port: 6379
+    password: LhPJNMF3
+  cloud:
+    gateway:
+      # 默认过滤器，使用/getheader接口测试即可
+      default-filters:
+        - AddRequestHeader=X-Request-Default, Gateway
+        - AddResponseHeader=X-Response-Default, Gateway
+      routes:
+        -  id: default_route
+           uri: lb://mima-cloud-producer
+           predicates:
+             -  Path= /**
+
+        -  id: add_request_header_route1
+           uri: lb://mima-cloud-producer
+           predicates:
+             -  Path= /getheader
+           filters:
+             # 添加请求头，静态数据
+             -  AddRequestHeader= X-Request-id, 999999
+             -  AddRequestHeader= X-Request-author, kevin
+
+        - id: add_request_header_route2
+          uri: lb://mima-cloud-producer
+          predicates:
+            - Path= /getheader/{seq}
+          filters:
+            # 添加请求头，动态参数
+            - AddRequestHeader= X-Request-id, 999999-{seq}
+            - AddRequestHeader= X-Request-author, kevin-{seq}
+
+        - id: add_request_header_route3
+          uri: lb://mima-cloud-producer
+          predicates:
+            - Path= /get/{var}
+          filters:
+            # 添加请求头，动态参数
+            - AddRequestHeader= X-Request-id, 999999-{var}
+
+        - id: add_request_header_route4
+          uri: lb://mima-cloud-producer
+          predicates:
+            - Path= /get/user/{seq}
+          filters:
+            # 添加请求头，动态参数
+            - AddRequestHeader= X-Request-id, 999999-{seq}
+
+server:
+  port: 8801
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kevin:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address:}:${server.port}
+debug: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown: true

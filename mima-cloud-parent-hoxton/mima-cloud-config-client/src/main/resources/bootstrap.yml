@@ -1,0 +1,21 @@
+#注意config-client的配置需要放到bootstrap.yml中
+management:
+  security:
+    enabled: false
+spring:
+  application:
+    name: mima-cloud-config-client
+  cloud:
+    config:
+      #安全认证设置用户名密码
+      uri: http://localhost:6061/
+      #指定profile，对应mmima-cloud-config-server所获取的配置文件中的{profile}
+      profile: prod
+      label: master
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
