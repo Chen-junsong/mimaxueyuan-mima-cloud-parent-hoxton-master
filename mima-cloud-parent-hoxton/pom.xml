@@ -7,6 +7,7 @@
 	<packaging>pom</packaging>
 
 <!--    测试连接123-->
+<!--    测试连接456-->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -14,6 +15,7 @@
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
+	<!--    测试连接456-->
 	<!--    测试连接123-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
